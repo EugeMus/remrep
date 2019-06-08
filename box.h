@@ -11,6 +11,7 @@ void set_width(double );
 void set_height(double );
 box();
 const box& operator= ( const box& );
+box(const box&);
 box(double );
 box(double , double );
 box(double , double , double );

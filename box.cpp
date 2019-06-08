@@ -23,6 +23,7 @@ const box& box::operator=(const box& a){
 	length = a.length;
 	width = a.width;
 	height = a.height;
+	std::cout<<"assignment operator was called"<<std::endl;
 	return *this;
 }
 box::box(){
@@ -43,7 +44,12 @@ box::box(double a, double b, double c){
 box::~box(){
 	std::cout<<"Destructor was called"<<std::endl;
 }
-
+box::box(const box& a){
+	length = a.length;
+	width = a.width;
+	height = a.height;
+	std::cout<<"copy constructor was called"<<std::endl;
+}
 double box::area() const {
 	return 2*length*height + 2*width*height + length*width;
 }
