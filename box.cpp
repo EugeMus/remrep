@@ -11,7 +11,7 @@ double box::get_height() const{
 	return height;
 }
 void box::set_length(double a){
-	length =a;
+	length = a;
 }
 void box::set_width(double a){
 	width = a;
@@ -85,4 +85,74 @@ box::box(const box& a){
 }
 double box::area() const {
 	return 2*length*height + 2*width*height + length*width;
+}
+
+double Wbox::get_w_width() const {
+	return W_width;
+}
+double Wbox::get_w_height() const {
+	return W_height;
+}
+
+void Wbox::set_w_width(double a) {
+	W_width = a;
+}
+
+void Wbox::set_w_height(double a) {
+	W_height = a;
+}
+
+Wbox::Wbox(): box() {
+	W_width = W_height = 0.33;
+}
+
+Wbox::Wbox(double a): box(a) {
+	W_width = W_height = a/3;
+}
+
+Wbox::Wbox(double a, double b): box(a,b) {
+	W_width = a/3;
+	W_height = b/3;
+}
+
+Wbox::Wbox(double a, double b, double c): box(a,b,c) {
+	W_width = b/3;
+	W_height = c/3;
+}
+
+Wbox::Wbox(double a, double b, double c, double d): box(a,b,c) {
+	W_width = W_height = d;
+}
+
+Wbox::Wbox(double a, double b, double c, double d, double e): box(a,b,c) {
+	W_width = d;
+	W_height = e;
+}
+
+Wbox::Wbox(const Wbox& a) {
+	length = a.length;
+	width = a.width;
+	height = a.height;
+	W_width = a.W_width;
+	W_height = a.W_height;
+	std::cout<<"copy Wbox constructor was called"<<std::endl;
+}
+
+const Wbox& Wbox::operator= (const Wbox& a) {
+	length = a.length;
+	width = a.width;
+	height = a.height;
+	W_width = a.W_width;
+	W_height = a.W_height;
+	std::cout<<"assignment Wbox operator was called"<<std::endl;
+	return *this;
+}
+
+
+Wbox::~Wbox(){
+	std::cout<<"Wbox destructor wascalled"<<std::endl;
+}
+
+double Wbox::area() const {
+	return 2*length*height + 2*width*height + length*width - W_width*W_height;
 }
