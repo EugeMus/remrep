@@ -1,7 +1,7 @@
 #include <iostream>
 #include "box.h"
 
-void get_double_area(box a){
+void get_double_area(box& a) {
 	std::cout<<"double area is "<<a.area()*2<<std::endl;
 }
 
@@ -35,8 +35,21 @@ int main(){
 	std::cout<<"size of char is "<<sizeof(char)<<std::endl;
 	std::cout<<"size of int* is "<<sizeof(int*)<<std::endl;
 	std::cout<<"size of short is "<<sizeof(short)<<std::endl;
+	
+
+	box first(1), second(1), third;
+	std::cout<<"before ++ first area = "<<first.area()<<" ,seconsd area = "<<second.area()<<std::endl;
+	second = ++first;
+	std::cout<<"after ++ first area = "<<first.area()<<" ,seconsd area = "<<second.area()<<std::endl;
+	second = first++;
+	std::cout<<"after ++(int) first area = "<<first.area()<<" ,seconsd area = "<<second.area()<<std::endl;
+	second = --first;
+	std::cout<<"after -- first area = "<<first.area()<<" ,seconsd area = "<<second.area()<<std::endl;
+	second = first--;
+	std::cout<<"after -- first area = "<<first.area()<<" ,seconsd area = "<<second.area()<<std::endl;
+	third = first + second;
+	std::cout<<"after adding first area = "<<first.area()<<" ,seconsd area = "<<second.area()<<" third area = "<<third.area()<<std::endl;
 	return 0;
-       
 }	
 
 

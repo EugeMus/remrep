@@ -19,13 +19,46 @@ void box::set_width(double a){
 void box::set_height(double a){
 	height = a;
 }
-const box& box::operator=(const box& a){
+const box& box::operator=(const box& a) {
 	length = a.length;
 	width = a.width;
 	height = a.height;
 	std::cout<<"assignment operator was called"<<std::endl;
 	return *this;
 }
+box& box::operator++ () {
+	length = length + 1;
+	width = width + 1;
+	height = height + 1;
+	return *this;
+}
+box box::operator++(int) {
+	box temp(*this);
+	length = length + 1;
+	width = width + 1;
+	height = height + 1;
+	return temp;
+}
+box& box::operator--() {
+	length = length - 1;// check value later
+	width = width - 1;
+	height = height - 1;
+	return *this;
+}
+box box::operator-- (int){
+	box temp(*this);
+	length = length - 1;//check value later 
+	width = width - 1;
+	height = height - 1;
+	return temp;
+}
+
+box operator+ (const box& a, const box& b) {
+	box c(a.length + b.length, a.width + b.width, a.height + b.height);
+	return c;
+}
+
+
 box::box(){
 	width = length = height = 0.66;
 }
